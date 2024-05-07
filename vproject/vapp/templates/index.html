@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Customer Management System</title>
+</head>
+{% load static %}
+<link rel = 'stylesheet' href="{% static 'style.css' %}">
+
+<body>
+  <div class="container">
+    <h2>Customer Details</h2>
+    <form="" method="">
+      <table id="Vendors" border="1">
+        <thead>
+            <th>Vendor Id</th>
+            <th>Name</th>
+            <th>Contact Details</th>
+            <th>Address</th>
+            <th>On Time Delivery Rate</th>
+            <th>Quality Rating Avg</th>
+            <th>Average Response Time</th>
+            <th>Fulfillment Rate</th>
+            <th colspan="2" id="mid">Action</th>
+        </thead>
+
+        {% for x in cust %}
+        <tr>
+            <td>{{x.vendor_id}}</td>
+            <td>{{x.name}}</td>
+            <td>{{x.contact_details}}</td>
+            <td>{{x.address}}</td>
+            <td>{{x.on_time_delivery_rate}}</td>
+            <td>{{x.quality_rating_avg}}</td>
+            <td>{{x.average_response_time}}</td>
+            <td>{{x.fulfillment_rate}}</td>
+            <td>
+              <a href="update/{{x.id}}"><button id="up">update</button></a>
+            </td>
+            <td>
+              <a href="delete/{{x.id}}"><button id="del">delete</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+      </table>
+      <br><br>
+      <a href="{% url 'add'%}"><button id="new3">Add Customer Details</button></a>
+    </form>
+  </div>
+
+</body>
+</html>
